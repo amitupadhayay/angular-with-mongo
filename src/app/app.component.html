@@ -1,0 +1,47 @@
+<div *ngIf="autenticated" [ngClass]="(autenticated == false)? 'hide-app' : '' ">
+  <mat-toolbar color="primary" layout="row" style="position: fixed;" class="main-color">
+    <button mat-icon-button class="menu-icon">
+      <mat-icon (click)="sidenav.toggle()" class="mat-24" aria-label="Menu">menu</mat-icon>
+    </button>
+    <span>ANGULAR-MONGODB</span>
+    <span class="toolbar-spacer text-center">{{pageName | uppercase}}</span>
+    <img class="avatar" src="../assets/IMG_20190504_170713.jpg">
+    <span class="ml-16">Aadvik Upadhyay</span>
+    <mat-icon class="toolbar-icon pointer" [matMenuTriggerFor]="menu">settings</mat-icon>
+  </mat-toolbar>
+
+  <mat-sidenav-container color="primary" fullscreen class="sidenav-container">
+
+    <mat-sidenav #sidenav mode="side" [opened]="opened" class="sidenav main-color">
+      <div class="pr-16 pl-16 pt-16">
+        <img class="avatar-big" src="../assets/IMG_20190504_170713.jpg">
+      </div>
+
+      <div *ngFor="let app of appList" class="pointer sidenav-div">
+        <h4 [ngClass]="getClassName(app.url)" (click)="redirectToModule(app.url)">
+          <mat-icon class="pr-8">{{app.icon}}</mat-icon>
+          <span>{{app.AppName | uppercase}}</span>
+        </h4>
+      </div>
+    </mat-sidenav>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-container>
+</div>
+
+<div *ngIf="autenticated==false" >
+  <router-outlet></router-outlet>
+</div>
+
+
+<mat-menu #menu="matMenu" class="pointer">
+  <button mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>Profile</span>
+  </button>
+  <button mat-menu-item (click)="onLogout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,58 @@
+<div>
+    <button mat-icon-button class="close-button" (click)="closePopup()">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>
+    <div class="main-color" mat-dialog-title>{{headerName | uppercase}}</div>
+
+    <div class="p-16">
+        <form [formGroup]="employeeForm" name="employeeForm" autocomplete="off">
+
+            <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.gt-xs="2%" fxLayoutAlign="center"
+                ngClass.xs="mobileContainer">
+                <mat-form-field fxFlex="33%">
+                    <input matInput formControlName="firstname" placeholder="First Name">
+                    <mat-icon matSuffix>business</mat-icon>
+                    <mat-error>First Name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="33%">
+                    <input matInput formControlName="lastname" placeholder="Last Name">
+                    <mat-icon matSuffix>qr_code</mat-icon>
+                    <mat-error>Last Name Code is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="33%">
+                    <input matInput formControlName="salary" placeholder="Salary">
+                    <mat-error>Salary is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.gt-xs="2%" fxLayoutAlign="center"
+                ngClass.xs="mobileContainer">
+                <mat-form-field fxFlex="50%">
+                    <input matInput formControlName="address1" placeholder="Address1">
+                    <mat-error>Address1 is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="50%">
+                    <input matInput formControlName="address2" placeholder="Address2">
+                    <mat-error>Address2 is required</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <mat-divider></mat-divider>
+            <div class="container mt-16 text-right dis-block" fxLayout="row" fxLayout.xs="column"
+                fxLayoutGap.gt-xs="2%">
+                <!-- <button type="button" mat-raised-button [disabled]="employeeForm.invalid"
+                [ngClass]="(employeeForm.invalid) ? '' : 'main-color' " (click)="saveCompany()">Save
+                Employee</button> -->
+                <mat-spinner-button class="main-color" [options]="buttonOptions" (btnClick)="saveEmployee()">
+                </mat-spinner-button>
+                <button type="button" class="main-color ml-16" mat-raised-button>Back</button>
+            </div>
+
+        </form>      
+
+    </div>
+</div>

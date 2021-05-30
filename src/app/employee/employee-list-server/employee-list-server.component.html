@@ -1,0 +1,142 @@
+<div class="list-toolbar main-color">
+    <div class="p-16">
+        <span (click)="addEditEmployee(null,false)" class="pl-16">
+            <span>
+                <mat-icon>add_circle_outline</mat-icon> Add
+            </span>
+        </span>
+        <span class="pl-16">
+            <span (click)="bulkDeleteEmployee()">
+                <mat-icon>delete</mat-icon>Delete
+            </span>
+        </span>
+        <span class="pl-16">
+            <span (click)="uploadEmployee()">
+                <mat-icon>cloud_upload</mat-icon>Upload
+            </span>
+        </span>
+
+    </div>
+</div>
+
+<mat-menu #appMenu="matMenu">
+    <ng-template let-row="row" matMenuContent>
+        <button mat-menu-item (click)="addEditEmployee(row,true)">
+            <mat-icon>edit</mat-icon>Edit
+        </button>
+        <button mat-menu-item (click)="deleteEmployee(row.EmployeeId)">
+            <mat-icon>delete</mat-icon>Delete
+        </button>
+    </ng-template>
+</mat-menu>
+
+<!-- <div *ngIf="loading" class="text-center">
+    <mat-spinner [diameter]="35"></mat-spinner>
+</div> -->
+
+<div class="m-8">
+
+    <ngx-datatable class="material" [rows]="employeeList" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [externalSorting]="true" [count]="page.count"
+        [offset]="page.offset" [limit]="page.limit" [sortType]="'single'" (page)="pageCallback($event)"
+        (sort)="sortCallback($event)" (activate)="onActivate($event)" (select)='onSelect($event)'
+        [loadingIndicator]="loading">
+
+
+        <ngx-datatable-footer>
+            <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+                let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
+                <div class="page-count">
+                    Total:{{rowCount}} |
+                    Size:{{limit}} |
+                    Selected:{{selected.length}} |
+                    Current: {{offset+1}}
+                </div>
+                <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'"
+                    [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'"
+                    [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount"
+                    [hidden]="!((rowCount / pageSize) > 1)" (change)="table.onFooterPage($event)">
+                </datatable-pager>
+            </ng-template>
+        </ngx-datatable-footer>
+
+        <ngx-datatable-column [width]="30" [sortable]="true" [canAutoResize]="false" [draggable]="false"
+            [resizeable]="false" class="uih">
+            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                let-selectFn="selectFn">
+                <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></mat-checkbox>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="First Name" prop="FirstName">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{value}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Last Name" prop="LastName">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{value}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Salary" prop="Salary">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{value}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Address1" prop="Address1">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{value}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Address2" prop="Address2">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{value}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name=" " prop="EmployeeId" [frozenRight]="true" [width]="41">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{row: row}">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <!-- <ngx-datatable-footer>
+            <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+                let-curPage="curPage" let-selected="selected">
+                <div style="padding: 5px 10px">
+                    <hr style="width:100%" />
+                    <div>
+                        Size: {{pageSize}} |
+                        Current: {{curPage}} |
+                        Rows: {{rowCount}} |
+                        <mat-form-field fxFlex="15%">
+                            <mat-select>
+                                <mat-option *ngFor="let li of limitList" [value]="li.key"
+                                    (click)="onLimitChange(li.key)">
+                                    {{li.key}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'"
+                    [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'"
+                    [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount"
+                    [hidden]="!((rowCount / pageSize) > 1)" (change)="table.onFooterPage($event)">
+                </datatable-pager>
+            </ng-template>
+        </ngx-datatable-footer> -->
+
+    </ngx-datatable>
+</div>

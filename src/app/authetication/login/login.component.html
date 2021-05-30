@@ -1,0 +1,31 @@
+<div class="p-16">
+    <form [formGroup]="loginForm" name="employeeForm" autocomplete="off">
+
+        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.gt-xs="2%" fxLayoutAlign="center"
+            ngClass.xs="mobileContainer">
+            <mat-form-field fxFlex="33%">
+                <input matInput formControlName="username" placeholder="User Name">
+                <mat-icon matSuffix>business</mat-icon>
+                <mat-error>User Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="33%">
+                <input matInput formControlName="password" placeholder="Password">
+                <mat-icon matSuffix>qr_code</mat-icon>
+                <mat-error>Password is required</mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <mat-divider></mat-divider>
+        <div class="container mt-16 text-right dis-block" fxLayout="row" fxLayout.xs="column" fxLayoutGap.gt-xs="2%">
+            <button type="button" mat-raised-button [disabled]="loginForm.invalid"
+                [ngClass]="(loginForm.invalid) ? '' : 'main-color' " (click)="login()">Login
+            </button>
+        </div>
+
+
+
+    </form>
+
+</div>

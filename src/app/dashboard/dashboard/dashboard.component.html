@@ -1,0 +1,38 @@
+<div class="p-8">
+    <div class="box flex main-color">
+        <div fxFlex="33%" class="text-left pointer icon-size" mwlCalendarPreviousView [view]="view"
+            [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+            <mat-icon>chevron_left</mat-icon>
+        </div>
+
+        <div fxFlex="33%" class="text-center" mwlCalendarToday [(viewDate)]="viewDate">
+            <mat-icon class="pointer">today</mat-icon> {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+        </div>
+
+        <div fxFlex="33%" class="text-right pointer icon-size" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()">
+            <mat-icon>chevron_right</mat-icon>
+        </div>
+    </div>
+
+
+    <div [ngSwitch]="view">
+        <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+            (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view>
+    </div>
+
+    <div echarts [options]="chartOption" class="demo-chart"></div>
+
+</div>

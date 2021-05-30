@@ -1,0 +1,418 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+body { 
+  font-family:Verdana, sans-serif;
+  margin: 0;
+  font-size: 11px!important;
+}
+
+.main-color{
+  color: #fff !important;
+  //background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%)!important; 
+  //background-image: linear-gradient(315deg, #1a73e8 0%, #20bf55 60%)!important; 
+  //background-image: linear-gradient(315deg, #1a73e8 0%, brown 60%)!important; 
+  //background-image: linear-gradient(315deg, #8FBC8F 10%, #61B329 60%) !important;
+
+  //check changes
+  
+  background-image:linear-gradient(315deg, cyan -20%, darkcyan 40%) !important
+  //background-image:linear-gradient(315deg, lightcyan -20%, #ff9933 40%) !important
+}
+
+.view-module{
+  //background: lightslategray;
+  background: #A0D5E8;
+  margin-top: -20px;
+  color: darkcyan;
+}
+
+.view-module p:hover{
+  color:#000;
+}
+
+.view-module h3:hover{
+  color:#000;
+}
+
+.sidenav{
+  min-width: 15%;
+  box-shadow: 0 5px 5px #000;
+}
+
+.sidenav-div h4:hover{
+  color:cyan;
+}
+
+.sidenav-div h4:focus{
+  background-color:cyan;
+}
+
+.list-toolbar{
+  height: 7% !important;
+  width:100%!important;
+  cursor: pointer !important;
+  padding-top: 5px !important;
+  box-shadow: 0 1px 1px #fff;
+}
+
+.list-toolbar span:hover{
+  color:cyan;
+}
+
+.mat-icon{
+  // color: darkcyan;
+  transition: all 1s ease-out !important;
+}
+
+.mat-icon:hover {
+  transform: rotate(180deg);
+}
+
+.mat-card{
+  background-color: #A0D5E8;
+  font-size: 15px;
+  color: darkcyan;
+  font-weight: 500;
+}
+
+.mat-card div:hover{
+  color:cyan;
+}
+
+mat-dialog-container .mat-icon{
+  font-size:16px !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: darkcyan !important;
+}
+
+.chip {
+  padding: 0px 25px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+  border-radius: 20px;
+}
+
+.pointer{
+  cursor: pointer !important;
+}
+
+.mat-dailog-header{
+  cursor: pointer;
+}
+
+.text-center {
+ text-align: center !important;
+}
+
+.text-right {
+  text-align: right!important;
+ }
+
+ .dis-block{
+display: block!important;
+ }
+
+.mobileContainer mat-form-field {
+  margin: 8px 16px;
+}
+
+// ==================== Start Margin Padding =====================================
+.m-8{
+  margin: 8px !important;
+}
+
+.ml-8{
+  margin-left: 8px !important;
+}
+
+.mr-8{
+  margin-right: 8px !important;
+}
+
+.mt-8{
+  margin-top: 8px !important;
+}
+
+.mb-8{
+  margin-bottom: 8px !important;
+}
+
+.m-16{
+  margin: 16px !important;
+}
+
+.ml-16{
+  margin-left: 16px!important;
+}
+
+.mr-16{
+  margin-right: 16px!important;
+}
+
+.mt-16{
+  margin-top: 16px!important;
+}
+
+.mb-16{
+  margin-bottom: 16px!important;
+}
+
+.p-8{
+  padding: 8px !important;
+}
+
+.p-16{
+  padding: 16px !important;
+}
+
+.pl-16{
+  padding-left: 16px !important;
+}
+
+.pr-16{
+  padding-right: 16px !important;
+}
+
+.pt-16{
+  padding-top: 16px !important;
+}
+
+.p-8{
+  padding: 8px !important;
+}
+
+.pb-16{
+  padding-bottom: 16px !important;
+}
+
+.pl-8{
+  padding-left: 8px !important;
+}
+
+.pr-8{
+  padding-right: 8px !important;
+}
+
+.pt-8{
+  padding-top: 8px !important;
+}
+
+.pb-8{
+  padding-bottom: 8px !important;
+}
+
+// ====================End Margin Padding =====================================
+
+// ==================== Start Grid =====================================
+.datatable-header{
+  text-transform: uppercase;
+  color: #000 !important;
+}
+
+// .datatable-header-cell{
+// color:#000!important;
+// font-size: 10px !important;
+// font-weight: bold !important;
+// background-color: lightgray !important;
+// }
+
+.datatable-body-cell{
+  font-size: 11px !important;
+  //padding :5px !important;  
+}
+
+.datatable-row-wrapper{
+  height: 50px !important;
+}
+
+.ngx-datatable.material {
+  .datatable-header {
+
+    .datatable-header-cell {
+      color:#000!important;
+      font-size: 11px !important;
+      font-weight: bold !important;
+      background-color: lightgray !important;
+    }
+
+  }
+}
+
+.datatable-footer .page-count {
+  flex: 1 1 35% !important;
+}
+
+// ==================== End Grid =====================================
+
+.icon-fs{
+  font-size: 17px;
+}
+
+
+        //Start  Flippable Card
+    
+        // .tp-wrapper {
+        //   -webkit-perspective: 800px;
+        //           perspective: 800px;
+        // }
+        
+        .flippable-box {
+          position: relative;
+          width: 100%;
+          height: 100px;
+          margin: 3rem auto;
+          -webkit-transform-style: preserve-3d;
+                  transform-style: preserve-3d;
+          -webkit-transform         : transform 1s;
+              -ms-transform         : transform 1s;
+                  transform         : transform 1s;
+        }
+        .flippable_side {
+           width: 100%;
+          height: 100%;
+          position: absolute;
+    
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+    
+          color:black;
+          // text-align: center;
+          // line-height: 100px;
+          // font-size: 24px;
+          // font-weight: 700;
+          cursor: pointer;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+        }
+        .flippable_front {
+          //background: green;
+          -webkit-transform : rotateY(0deg);
+          -ms-transform     : rotateY(0deg);
+          transform         : rotateY(0deg);
+        }
+        .flippable_back {
+         // background: #23262d;
+          -webkit-transform : rotateY(-180deg);
+          -ms-transform     : rotateY(-180deg);
+          transform         : rotateY(-180deg);
+        }
+
+    //End  Flippable Card
+
+    .card-right{
+      display: inline;
+      float: right;
+    }
+    
+    .card-left{
+      display: inline;
+    }
+    
+    .card-container{
+      border-bottom:1px solid gray;
+      margin-bottom:20px;
+    }
+
+    .cal-month-view .cal-open-day-events {
+      color: black;
+      background-color: lightblue
+    }
+
+    .cal-month-view .cal-day-badge {
+      background-color: green;
+      color: #fff;
+  }
+
+  .box.flex {
+    display: flex;
+    line-height: 30px;
+  }
+  
+  .box {
+    padding: .5rem;
+    height: 30px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.03);
+    border-radius: 4px;
+    
+  
+    color: #84613D;
+    background: #FDF9EA;
+    border-bottom: 1px solid #F9F2D6;
+    border-right: 1px solid #F9F2D6;
+  }
+  
+  .box div{
+    width:33%;
+  }
+
+///////////////////////////////// Popup Close Button/////////////////////
+.close-button{
+  float: right;
+  top:0px;
+  right:0px;
+}
+
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
+
+::ng-deep .icon-outside .close-button{
+  float: right;
+  top:-52px;
+  right:-52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+ overflow: unset
+}
+
+.mat-dialog-container {
+  border-radius: 10px!important;
+  padding: 0px!important;
+}
+
+.mat-dialog-title{
+  height: 7%;
+  padding-top: 15px;
+  padding-left: 15px;
+  font-family:Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.mat-menu-item {
+  font-family:Verdana, sans-serif;
+  font-size: 10px;
+}
+
+.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab{
+  font-family:Verdana, sans-serif !important;
+  font-size: 11px !important;
+}
+
+.mat-raised-button{
+  padding: 0px 5px !important;
+  border-radius: 5px !important;
+}
+
+.disable-button{
+  background-color: lightgray !important;
+  color: #000 !important;
+}
+
+.material-icons {
+  font-size: 18px !important;
+}
+///////////////////////////////// Popup Close Button/////////////////////

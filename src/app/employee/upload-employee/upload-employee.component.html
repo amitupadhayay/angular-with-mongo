@@ -1,0 +1,13 @@
+<div>
+    <button mat-icon-button class="close-button" (click)="closePopup()">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>
+    <div class="main-color" mat-dialog-title>UPLOAD EMPLOYEE</div>
+
+    <div class="p-16">
+        <label for="myfile">Select a file:</label>
+        <input #fileInput type="file" id="myfile" name="myfile"><br><br>
+        <button (click)="uploadEmployeeFromExcel()" class="main-color ml-16" mat-raised-button> Upload </button>
+    </div>
+
+</div>
