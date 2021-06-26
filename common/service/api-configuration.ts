@@ -91,13 +91,15 @@ export enum API_URL {
     // Autentication_URL = 'https://localhost:44375/api/Auth/',
 
 
-    //.NET CORE API
-    //Employee_URL = 'https://localhost:44346/Employee/', 
+    //WEB API
+    Employee_URL = 'https://localhost:44346/Employee/', 
+    Common_URL = 'http://localhost:44346/api/Common/',
+    Autentication_URL = 'https://localhost:44346/api/Auth/',
 
      //.NET CORE MongoDB API
-    Autentication_URL = 'https://localhost:44319/api/Auth/',
-    Employee_URL = 'https://localhost:44319/api/Employee/', 
-    Common_URL = 'http://localhost:44319/api/Common/',
+    // Autentication_URL = 'https://localhost:44319/api/Auth/',
+    // Employee_URL = 'https://localhost:44319/api/Employee/', 
+    // Common_URL = 'http://localhost:44319/api/Common/',
     
 
 
