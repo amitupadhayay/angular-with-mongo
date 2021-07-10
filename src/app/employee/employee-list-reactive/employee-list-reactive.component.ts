@@ -7,8 +7,8 @@ import { DynamicEmployeeMetaData } from 'common/model/common-metadata';
 import { AddEmployeeMetaData, BulkEmployeeDeleteMetaData, DynamicEmployeeList } from 'common/model/employee.metadata';
 import { RetryService } from 'common/service/rxjs-retry';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { EMPTY, merge, observable, Observable, of, Subject } from 'rxjs';
-import { catchError, map, mergeMap, startWith, switchMap, tap } from 'rxjs/operators';
+import { EMPTY, merge, observable, Observable, of, pipe, Subject } from 'rxjs';
+import { catchError, map, mergeMap, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { EmployeeService } from '../employee.service';
 import { UploadEmployeeComponent } from '../upload-employee/upload-employee.component';
@@ -31,11 +31,13 @@ export class EmployeeListReactiveComponent implements OnInit {
   columns = [];
   loading: boolean = false;
 
+  list = [];
   page: DynamicEmployeeMetaData;
 
-  //employeeList$: Observable<AddEmployeeMetaData[]>;
-  employeeList$: Observable<DynamicEmployeeList>;
-  totalRows$: Observable<number>;
+  employeeList$: Observable<AddEmployeeMetaData[]>;
+  // employeeList$: Observable<DynamicEmployeeList>;
+  totalRows: number = 0;
+  employeeObserver$: Observable<Observable<any>>;
 
   constructor(
     private employeeService: EmployeeService,
@@ -65,35 +67,38 @@ export class EmployeeListReactiveComponent implements OnInit {
   //   this.employeeList$ = this.employeeService.getEmployeeList();
   // }
 
-
   // getEmployeeList() {
   //   this.loading = true;
-  //   const observer$ = of(this.employeeService.getEmployeeList());
-  //   this.employeeList$ = observer$.pipe(
+  //   const employeeObserver$ = of(this.employeeService.getEmployeeList().pipe(shareReplay()));
+  //   this.employeeList$ = employeeObserver$.pipe(
   //     mergeMap((resp) => {
   //       this.loading = false;
+  //       resp.subscribe((result) => {
+  //        this.totalRows = result.Count;
+  //       })
   //       return resp;
   //     }),
-  //     // error(err=>{
-  //     //   console.log(err);
-  //     //   return EMPTY;
-  //     // }
+  //     catchError(err=>{
+  //       this.toastr.errorToastr('error are coming','');
+  //       return err;
+  //     })
   //   )
   // }
 
+
   getEmployeeList() {
     this.loading = true;
-    const observer$ = of(this.employeeService.getDynamicEmployeeList(this.page));
-    this.employeeList$ = observer$.pipe(
-      mergeMap((resp) => {
-        debugger;
+    this.employeeList$ = this.employeeService.getDynamicEmployeeList(this.page)
+      .pipe(map((resp:any) => {
         this.loading = false;
-        //var asd = resp.toPromise();
         return resp;
-      })
-    )
+      }),
+        catchError(err => {
+          this.loading = false;
+          return "";
+        })
+      )
   }
-
 
   addEditEmployee(rowData, isEdit) {
     const dialog = this.matDialog.open(EmployeeFormComponent, {

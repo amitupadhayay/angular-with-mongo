@@ -1,0 +1,31 @@
+.mat-card{
+    width: 40%;
+    height: 40%;
+    top: 20%!important;
+    left: 30%;
+    position: absolute;
+    justify-content: center;
+    background-color: darkcyan;   
+    color: #fff;
+}
+
+.mat-card-title{
+    text-align: center;
+}
+
+.mat-card-content{
+    width: 95%;
+    // background: red;
+    height: 50%;
+    top: 30%;
+    position: absolute;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label{
+color: #fff !important;
+}
+
+.mat-raised-button{
+    width: 50%;
+    border: 1px solid #fff;
+}

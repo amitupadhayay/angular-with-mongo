@@ -31,11 +31,11 @@ const routes: Routes = [
     //     component: EmployeeListServerComponent,
     //     //canActivate: [AuthGuardService],
     // },
-    // {
-    //     path: 'employeereactive',
-    //     component: EmployeeListReactiveComponent,
-    //     //canActivate: [AuthGuardService],
-    // },
+    {
+        path: 'employeereactive',
+        component: EmployeeListReactiveComponent,
+        //canActivate: [AuthGuardService],
+    },
     // {
     //     path: 'viewcompany/:id',
     //     component: CompanyViewComponent,

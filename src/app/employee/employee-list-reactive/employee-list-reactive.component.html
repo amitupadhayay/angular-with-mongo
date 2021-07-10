@@ -36,7 +36,9 @@
 
 <div class="m-8">
 
+    <!-- <ngx-datatable #table class="material" [rows]="(employeeList$ | async)?.EmployeeList" [columns]="columns" [limit]="limit" -->
     <ngx-datatable #table class="material" [rows]="(employeeList$ | async)?.EmployeeList" [columns]="columns" [limit]="limit"
+       
         [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [scrollbarH]="true"
         [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'
         [loadingIndicator]="loading">
@@ -45,7 +47,7 @@
             <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
                 let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
                 <div class="page-count">
-                    Total:{{(employeeList$ | async)?.Count}} |
+                    Total:{{totalRows}} |
                     Size:{{limit}} |
                     Selected:{{selected.length}} |
                     Current: {{curPage}}
@@ -56,7 +58,7 @@
                     [hidden]="!((rowCount / pageSize) > 1)" (change)="table.onFooterPage($event)">
                 </datatable-pager>
             </ng-template>
-        </ngx-datatable-footer>
+        </ngx-datatable-footer> 
 
         <ngx-datatable-column [width]="30" [sortable]="true" [canAutoResize]="false" [draggable]="false"
             [resizeable]="false" class="uih">

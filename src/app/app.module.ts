@@ -17,13 +17,11 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
 import { AppInterceptorService } from 'common/service/app-interceptor.service';
 import { AuthguardService } from 'common/service/authguard.service';
+import { UserIdleModule } from 'angular-user-idle';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { MomentModule } from 'angular2-moment';
 
-const routes: Routes = [
-  {
-    path: 'employee',
-    loadChildren: () => import('src/app/employee/employee.module').then(mod => mod.EmployeeModule),
-    canActivate: [AuthguardService],
-  },
+const routes: Routes = [ 
   {
     path: 'login',
     loadChildren: () => import('src/app/authetication/login.module').then(mod => mod.LoginModule),
@@ -62,6 +60,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ToastrModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    // UserIdleModule.forRoot({idle: 600, timeout: 300, ping: 120})
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule,
   ],
   exports: [
     [RouterModule],

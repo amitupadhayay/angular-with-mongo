@@ -4,10 +4,19 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
+:root {
+  --mainFontFamily: Cursive !important;
+  --mainFontSize: 13px!important;
+  --mainLetterSpacing:0.5px!important;
+  
+}
+
 body { 
-  font-family:Verdana, sans-serif;
+  // font-family:Verdana, sans-serif;
   margin: 0;
-  font-size: 11px!important;
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
 }
 
 .main-color{ 
@@ -19,9 +28,52 @@ body {
 
   //check changes 12121
   
-  background-image:linear-gradient(315deg, cyan -20%, darkcyan 40%) !important
+  background-image:linear-gradient(315deg, cyan -20%, darkcyan 100%) !important
   //background-image:linear-gradient(315deg, lightcyan -20%, #ff9933 40%) !important
 }
+
+.mat-card{
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
+  background-color: #A0D5E8;
+  color: darkcyan;
+}
+
+
+.mat-form-field{
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
+}
+
+.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
+}
+
+.mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
+}
+
+.mat-dialog-title{
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
+  height: 7%;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.mat-menu-item{
+  font-family: var(--mainFontFamily); 
+  font-size: var(--mainFontSize);
+  letter-spacing: var(--mainLetterSpacing);
+}
+
 
 .view-module{ 
   //background: lightslategray;
@@ -70,21 +122,6 @@ body {
 
 .mat-icon:hover {
   transform: rotate(180deg);
-}
-
-.mat-card{
-  background-color: #A0D5E8;
-  font-size: 15px;
-  color: darkcyan;
-  font-weight: 500;
-}
-
-.mat-card div:hover{
-  color:cyan;
-}
-
-mat-dialog-container .mat-icon{
-  font-size:16px !important;
 }
 
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
@@ -216,17 +253,9 @@ display: block!important;
   color: #000 !important;
 }
 
-// .datatable-header-cell{
-// color:#000!important;
-// font-size: 10px !important;
-// font-weight: bold !important;
-// background-color: lightgray !important;
+// .datatable-body-cell{
+//   font-size: 11px !important;
 // }
-
-.datatable-body-cell{
-  font-size: 11px !important;
-  //padding :5px !important;  
-}
 
 .datatable-row-wrapper{
   height: 50px !important;
@@ -234,15 +263,17 @@ display: block!important;
 
 .ngx-datatable.material {
   .datatable-header {
-
     .datatable-header-cell {
       color:#000!important;
-      font-size: 11px !important;
       font-weight: bold !important;
       background-color: lightgray !important;
     }
 
   }
+}
+
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+  font-size: 12px !important;
 }
 
 .datatable-footer .page-count {
@@ -283,10 +314,7 @@ display: block!important;
           backface-visibility: hidden;
     
           color:black;
-          // text-align: center;
-          // line-height: 100px;
-          // font-size: 24px;
-          // font-weight: 700;
+         
           cursor: pointer;
           -webkit-user-select: none;
              -moz-user-select: none;
@@ -384,23 +412,6 @@ display: block!important;
   padding: 0px!important;
 }
 
-.mat-dialog-title{
-  height: 7%;
-  padding-top: 15px;
-  padding-left: 15px;
-  font-family:Verdana, sans-serif;
-  font-size: 12px;
-}
-
-.mat-menu-item {
-  font-family:Verdana, sans-serif;
-  font-size: 10px;
-}
-
-.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab{
-  font-family:Verdana, sans-serif !important;
-  font-size: 11px !important;
-}
 
 .mat-raised-button{
   padding: 0px 5px !important;
@@ -413,6 +424,11 @@ display: block!important;
 }
 
 .material-icons {
-  font-size: 18px !important;
+  font-size: 20px !important;
 }
 ///////////////////////////////// Popup Close Button/////////////////////
+
+.width-50{
+  width: 50%;
+}
+
