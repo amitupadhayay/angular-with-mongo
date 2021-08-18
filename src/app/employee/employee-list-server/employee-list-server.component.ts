@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { DynamicEmployeeMetaData } from 'common/model/common-metadata';
-import { BulkEmployeeDeleteMetaData } from 'common/model/employee.metadata';
+import { BulkEmployeeDeleteMetaData, DynamicEmployeeList } from 'common/model/employee.metadata';
 import { RetryService } from 'common/service/rxjs-retry';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { of } from 'rxjs';
-import { catchError, retryWhen } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, retryWhen } from 'rxjs/operators';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { EmployeeService } from '../employee.service';
 import { UploadEmployeeComponent } from '../upload-employee/upload-employee.component';
@@ -31,6 +31,7 @@ export class EmployeeListServerComponent implements OnInit {
   loading: boolean = false;
 
   page: DynamicEmployeeMetaData;
+  employeeList$:Observable<DynamicEmployeeList>
 
   constructor(
     private employeeService: EmployeeService,
@@ -65,26 +66,40 @@ export class EmployeeListServerComponent implements OnInit {
     this.getDynamicEmployeeList();
   }
 
+  // getDynamicEmployeeList() {
+  //   this.loading = true;
+  //   this.employeeService.getDynamicEmployeeList(this.page)
+  //     //.pipe(retryWhen(this.retry.genericRetryStrategy()),
+  //     //catchError(error => of(error)))
+  //     .subscribe((resp: any) => {
+  //       if (resp.error != undefined) {
+  //         this.toastr.errorToastr(resp.error.ExceptionMessage);
+  //       }
+  //       else {
+  //         this.employeeList = resp.EmployeeList;
+  //         this.page.count = resp.Count;
+  //       }
+  //       this.loading = false;
+  //     },
+  //       error => {
+  //         this.loading = false;
+  //         this.toastr.errorToastr('This is not good!', 'Oops!');
+  //       })
+  // }
+
   getDynamicEmployeeList() {
-    this.loading = true;
-    this.employeeService.getDynamicEmployeeList(this.page)
-      //.pipe(retryWhen(this.retry.genericRetryStrategy()),
-      //catchError(error => of(error)))
-      .subscribe((resp: any) => {
-        if (resp.error != undefined) {
-          this.toastr.errorToastr(resp.error.ExceptionMessage);
-        }
-        else {
-          this.employeeList = resp.EmployeeList;
-          this.page.count = resp.Count;
-        }
-        this.loading = false;
-      },
-        error => {
+      this.loading = true;
+      this.employeeList$ = this.employeeService.getDynamicEmployeeList(this.page)
+        .pipe(map((resp:any) => {
           this.loading = false;
-          this.toastr.errorToastr('This is not good!', 'Oops!');
-        })
-  }
+          return resp;
+        }),
+          catchError(err => {
+            this.loading = false;
+            return "";
+          })
+        )
+    }
 
   addEditEmployee(rowData, isEdit) {
     const dialog = this.matDialog.open(EmployeeFormComponent, {

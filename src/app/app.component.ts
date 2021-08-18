@@ -189,9 +189,9 @@ export class AppComponent {
     localStorage.clear();
     this.autenticated = false;
     this.routeService.redirectToURL("login");
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
+   // setTimeout(() => {
+      //window.location.reload(); 
+    //}, 50);
   }
 
 

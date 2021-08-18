@@ -26,11 +26,11 @@ const routes: Routes = [
         component: EmployeeListComponent,
         canActivate: [AuthguardService],
     },
-    // {
-    //     path: 'employeeserver',
-    //     component: EmployeeListServerComponent,
-    //     //canActivate: [AuthGuardService],
-    // },
+    {
+        path: 'employeeserver',
+        component: EmployeeListServerComponent,
+        canActivate: [AuthguardService],
+    },
     {
         path: 'employeereactive',
         component: EmployeeListReactiveComponent,

@@ -8,7 +8,7 @@
   --mainFontFamily: Cursive !important;
   --mainFontSize: 13px!important;
   --mainLetterSpacing:0.5px!important;
-  
+  --mainFontWeight:700 !important;  
 }
 
 body { 
@@ -17,6 +17,7 @@ body {
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
 }
 
 .main-color{ 
@@ -36,6 +37,7 @@ body {
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
   background-color: #A0D5E8;
   color: darkcyan;
 }
@@ -45,24 +47,28 @@ body {
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
 }
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
 }
 
 .mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
 }
 
 .mat-dialog-title{
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
   height: 7%;
   padding-top: 15px;
   padding-left: 15px;
@@ -72,6 +78,7 @@ body {
   font-family: var(--mainFontFamily); 
   font-size: var(--mainFontSize);
   letter-spacing: var(--mainLetterSpacing);
+  font-weight: var(--mainFontWeight);
 }
 
 
@@ -265,7 +272,7 @@ display: block!important;
   .datatable-header {
     .datatable-header-cell {
       color:#000!important;
-      font-weight: bold !important;
+      font-weight:var(--mainFontWeight);
       background-color: lightgray !important;
     }
 
@@ -274,6 +281,12 @@ display: block!important;
 
 .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
   font-size: 12px !important;
+  font-weight:var(--mainFontWeight);
+}
+
+.ngx-datatable.material .datatable-footer {
+  font-size: 12px !important;
+  font-weight:var(--mainFontWeight);
 }
 
 .datatable-footer .page-count {
@@ -427,6 +440,14 @@ display: block!important;
   font-size: 20px !important;
 }
 ///////////////////////////////// Popup Close Button/////////////////////
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: darkcyan !important;
+}
+
+.full-width{
+  width: 100%;
+}
 
 .width-50{
   width: 50%;

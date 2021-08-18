@@ -57,6 +57,17 @@ export class ApiService {
         return this.http.post(urlMetadata.URL + urlMetadata.MethodName, formData, httpOptions)
     }
 
+    uploadFile(urlMetadata: URLMetadata, formData: FormData): Observable<any> {
+        let headers = new HttpHeaders();
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+        const httpOptions = { headers: headers };
+        return this.http.post(urlMetadata.URL + urlMetadata.MethodName, formData, {
+            reportProgress: true,
+            observe: 'events'
+        })
+    }
+
     handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
             console.error(error); // log to console instead
@@ -98,9 +109,9 @@ export enum API_URL {
 
     // .NET CORE MongoDB API
     Autentication_URL = 'https://localhost:44319/api/Auth/',
-    Employee_URL = 'https://localhost:44319/api/Employee/', 
+    Employee_URL = 'https://localhost:44319/api/Employee/',
     Common_URL = 'http://localhost:44319/api/Common/',
-    
+
 
 
 }

@@ -88,7 +88,7 @@ export class EmployeeListReactiveComponent implements OnInit {
 
   getEmployeeList() {
     this.loading = true;
-    this.employeeList$ = this.employeeService.getDynamicEmployeeList(this.page)
+    this.employeeList$ = this.employeeService.getEmployeeList()
       .pipe(map((resp:any) => {
         this.loading = false;
         return resp;
@@ -151,7 +151,7 @@ export class EmployeeListReactiveComponent implements OnInit {
     var bulk = new BulkEmployeeDeleteMetaData();
     bulk.EmployeeId = empId;
     this.loading = true;
-    this.employeeService.bulkDeleteEmployee(bulk)
+    this.employeeService.bulkDeleteEmployee(empId)
       .subscribe((resp: any) => {
         this.toastr.successToastr('Employee deleted successfully', 'Success!');
         this.getEmployeeList();

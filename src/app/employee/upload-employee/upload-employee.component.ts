@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CommonService } from 'common/service/common.service';
@@ -48,8 +49,18 @@ export class UploadEmployeeComponent implements OnInit {
     formData.append('file', this.fileInput.nativeElement.files[0])
 
     this.employeeService.uploadEmployeeExcel(formData)
-      .subscribe((response: any) => {
-        this.dialogRef.close(true);
+      .subscribe((event: any) => {
+        switch (event.type) {
+          case HttpEventType.UploadProgress: {
+            let progress = Math.round(event.loaded * 100 / event.total);
+            break;
+          }
+          case HttpEventType.Response: {
+            this.dialogRef.close(true);
+            return event;
+           
+          }
+        }
       },
         error => {
           this.buttonOptions = this.commonService.getButtonOptions("Save Employee", "save");

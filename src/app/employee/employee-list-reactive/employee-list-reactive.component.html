@@ -36,8 +36,7 @@
 
 <div class="m-8">
 
-    <!-- <ngx-datatable #table class="material" [rows]="(employeeList$ | async)?.EmployeeList" [columns]="columns" [limit]="limit" -->
-    <ngx-datatable #table class="material" [rows]="(employeeList$ | async)?.EmployeeList" [columns]="columns" [limit]="limit"
+    <ngx-datatable #table class="material" [rows]="employeeList$ | async" [columns]="columns" [limit]="limit"
        
         [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [scrollbarH]="true"
         [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'
@@ -47,7 +46,7 @@
             <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
                 let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
                 <div class="page-count">
-                    Total:{{totalRows}} |
+                    Total:{{(employeeList$ | async)?.length}} |
                     Size:{{limit}} |
                     Selected:{{selected.length}} |
                     Current: {{curPage}}
@@ -110,7 +109,7 @@
             </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-footer>
+        <!-- <ngx-datatable-footer>
             <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
                 let-curPage="curPage" let-selected="selected">
                 <div style="padding: 5px 10px">
@@ -136,7 +135,7 @@
                     [hidden]="!((rowCount / pageSize) > 1)" (change)="table.onFooterPage($event)">
                 </datatable-pager>
             </ng-template>
-        </ngx-datatable-footer>
+        </ngx-datatable-footer>-->
 
-    </ngx-datatable>
+    </ngx-datatable> 
 </div>

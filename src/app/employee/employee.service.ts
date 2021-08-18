@@ -61,9 +61,9 @@ export class EmployeeService {
 
   uploadEmployeeExcel(formData: FormData) {
     this.urlMetadata.URL = API_URL.Employee_URL;
-    this.urlMetadata.MethodName = "AddEmployeeFromExcel";
+    this.urlMetadata.MethodName = "UploadEmployee";
     this.urlMetadata.Params = formData;
-    return this.apiService.upload(this.urlMetadata, formData);
+    return this.apiService.uploadFile(this.urlMetadata, formData);
   }
 
   getDynamicEmployeeList(dynamicEmp) {
